@@ -916,3 +916,4 @@ function updateRatingSummary() {
 
 
 console.log('✅ Correcciones CORS aplicadas');
+
