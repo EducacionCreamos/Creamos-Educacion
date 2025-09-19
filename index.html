@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educación Acelerada - CREAMOS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <h2>CREAMOS</h2>
+            <p>Cargando...</p>
+        </div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <div class="logo">C</div>
+                <div>
+                    <div class="logo-text">CREAMOS</div>
+                    <div class="logo-subtitle">Educación Para Adultos</div>
+                </div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Estudiantes</a>
+                    <div class="dropdown-content">
+                        <div class="submenu-header">Plan Diario</div>
+                        <a href="https://maestrocreamos.github.io/NOTASPLANDIARIO.github.io/" target="_blank">📊 Consulta de Calificaciones</a>
+                        <a href="https://maestrocreamos.github.io/TAREASDIARIO.github.io/" target="_blank">📝 Consulta de Tareas</a>
+                        
+                        <div class="submenu-header">Plan Domingo</div>
+                        <a href="https://maestrocreamos.github.io/NOTASDOMINGO.github.io/" target="_blank">📊 Consulta de Calificaciones</a>
+                        <a href="https://maestrocreamos.github.io/TAREADOMINGO.github.io/" target="_blank">📝 Consulta de Tareas</a>
+                    </div>
+                </li>
+                
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Maestros</a>
+                    <div class="dropdown-content">
+                        <div class="submenu-header">Tareas</div>
+                        <a href="https://maestrocreamos.github.io/portalmaestros.github.io/" target="_blank">📚 Plan Diario</a>
+                        <a href="#" onclick="showComingSoon('Plan Domingo - Tareas')">📚 Plan Domingo</a>
+                        
+                        <div class="submenu-header">Calificaciones</div>
+                        <a href="https://maestrocreamos.github.io/NOTASDIARIOMAESTROS.github.io/" target="_blank">📊 Plan Diario</a>
+                        <a href="https://maestrocreamos.github.io/NOTASDOMINGOMAESTROS.github.io/" target="_blank">📊 Plan Domingo</a>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="showInscripcionesModal()">Inscripciones</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://creamosguatemala.org/" class="nav-link" target="_blank">Sobre CREAMOS</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="showProgram()">Nuestro Programa</a>
+                </li>
+            </ul>
+            
+            <button class="mobile-menu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Modal de Inscripciones -->
+    <div class="modal-overlay" id="inscripcionesModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📝 Proceso de Inscripciones</h3>
+                <button class="modal-close" onclick="closeInscripcionesModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="inscripciones-info">
+                    <div class="contact-options">
+                        <div class="contact-option">
+                            <div class="contact-icon">📱</div>
+                            <div>
+                                <strong>PLAN DIARIO (Mujeres)</strong>
+                                <p><a href="https://wa.me/50255709214?text=Hola,%20estoy%20interesada%20en%20el%20Plan%20Diario%20de%20Educación%20Acelerada.%20¿Podrían%20darme%20más%20información?" target="_blank">📱 WhatsApp: 5570-9214</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-option">
+                            <div class="contact-icon">📱</div>
+                            <div>
+                                <strong>PLAN DOMINGO (Hombres)</strong>
+                                <p><a href="https://wa.me/50244160597?text=Hola,%20estoy%20interesado%20en%20el%20Plan%20Domingo%20de%20Educación%20Acelerada.%20¿Podrían%20darme%20más%20información?" target="_blank">📱 WhatsApp: 4416-0597</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cupos-warning">
+                        <p><strong>⚠️ Los cupos son limitados, no esperes más y asegura poder estudiar el ciclo escolar llenando el formulario</strong></p>
+                    </div>
+                    
+                    <div class="form-section">
+                        <button class="btn btn-primary btn-formulario" onclick="openFormulario()">
+                            📋 Llenar Formulario de Pre-inscripción
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal del Formulario de Google -->
+    <div class="modal-overlay" id="formularioModal">
+        <div class="modal-content modal-formulario">
+            <div class="modal-header">
+                <h3>📋 Formulario de Pre-inscripción</h3>
+                <button class="modal-close" onclick="closeFormularioModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-container">
+                    <iframe 
+                        src="https://docs.google.com/forms/d/e/1FAIpQLSdGRw4LXys4oHV5np97_ID_PLACEHOLDER/viewform?embedded=true" 
+                        width="100%" 
+                        height="600" 
+                        frameborder="0" 
+                        marginheight="0" 
+                        marginwidth="0">
+                        Cargando…
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main id="mainContent">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-badge">🎓 Educación Acelerada CREAMOS</div>
+                    <h1>Tu educación te espera</h1>
+                    <p>Educación gratuita y acreditada para jóvenes y adultos. Solo un día por semana. Sin barreras, con todo el apoyo que necesitas.</p>
+                    
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">+300</span>
+                            <span class="stat-label">Participantes </span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">+36</span>
+                            <span class="stat-label">Graduados </span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Gratuito</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-primary" onclick="showInscripcionesModal()">
+                            📝 Inscríbete Gratis
+                        </a>
+                        <a href="#about" class="btn btn-secondary">
+                            💡 Conoce más
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <img src="principal.jpg" alt="Estudiantes CREAMOS" class="hero-image">
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Access Section -->
+        <section style="padding: 4rem 2rem; background: linear-gradient(135deg, #3498db, #2c3e50);">
+            <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+                <h2 style="color: white; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">Acceso Rápido</h2>
+                <p style="color: rgba(255,255,255,0.9); font-size: 1.2rem; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">Selecciona tu perfil para acceder a los servicios digitales</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <!-- Botón Estudiantes -->
+                    <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 20px; padding: 2.5rem; border: 2px solid rgba(255,255,255,0.2); transition: all 0.3s ease;" 
+                         onmouseover="this.style.transform='translateY(-10px)'; this.style.background='rgba(255,255,255,0.2)'" 
+                         onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255,255,255,0.1)'">
+                        <div style="width: 80px; height: 80px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2.5rem;">🎓</div>
+                        <h3 style="color: white; font-size: 1.8rem; font-weight: 600; margin-bottom: 1rem;">ESTUDIANTES</h3>
+                        <p style="color: rgba(255,255,255,0.8); margin-bottom: 2rem; line-height: 1.6;">Accede a tus calificaciones, tareas y toda la información académica</p>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div class="dropdown" style="position: relative;">
+                                <button style="width: 100%; background: white; color: #2c3e50; border: none; padding: 1rem 1.5rem; border-radius: 12px; font-weight: 600; font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease;" 
+                                        onmouseover="this.style.background='#f8f9fa'" 
+                                        onmouseout="this.style.background='white'">
+                                    📚 Plan Diario (Mujeres) ▼
+                                </button>
+                                <div class="dropdown-content" style="display: none; position: absolute; background: white; width: 100%; box-shadow: 0 8px 32px rgba(0,0,0,0.15); z-index: 1001; border-radius: 12px; padding: 0.5rem 0; top: calc(100% + 10px); left: 0; border: 1px solid rgba(0,0,0,0.1);">
+                                    <a href="https://maestrocreamos.github.io/NOTASPLANDIARIO.github.io/" target="_blank" style="color: #2c3e50; padding: 0.8rem 1.5rem; text-decoration: none; display: block; transition: all 0.3s ease; font-weight: 500;">📊 Ver Calificaciones</a>
+                                    <a href="https://maestrocreamos.github.io/TAREASDIARIO.github.io/" target="_blank" style="color: #2c3e50; padding: 0.8rem 1.5rem; text-decoration: none; display: block; transition: all 0.3s ease; font-weight: 500;">📝 Ver Tareas</a>
+                                    <a href="https://wa.me/50255709214?text=Hola,%20necesito%20ayuda%20con%20mi%20cuenta%20de%20estudiante%20del%20Plan%20Diario." target="_blank" style="color: #25D366; padding: 0.8rem 1.5rem; text-decoration: none; display: block; transition: all 0.3s ease; font-weight: 500; border-top: 1px solid #f1f3f4;">💬 Soporte WhatsApp</a>
+                                </div>
+                            </div>
+                            
+                            <div class="dropdown" style="position: relative;">
+                                <button style="width: 100%; background: rgba(255,255,255,0.9); color: #2c3e50; border: none; padding: 1rem 1.5rem; border-radius: 12px; font-weight: 600; font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease;" 
+                                        onmouseover="this.style.background='rgba(255,255,255,1)'" 
+                                        onmouseout="this.style.background='rgba(255,255,255,0.9)'">
+                                    🗓️ Plan Domingo (Hombres) ▼
+                                </button>
+                                <div class="dropdown-content" style="display: none; position: absolute; background: white; width: 100%; box-shadow: 0 8px 32px rgba(0,0,0,0.15); z-index: 1001; border-radius: 12px; padding: 0.5rem 0; top: calc(100% + 10px); left: 0; border: 1px solid rgba(0,0,0,0.1);">
+                                    <a href="https://maestrocreamos.github.io/NOTASDOMINGO.github.io/" target="_blank" style="color: #2c3e50; padding: 0.8rem 1.5rem; text-decoration: none; display: block; transition: all 0.3s ease; font-weight: 500;">📊 Ver Calificaciones</a>
+                                    <a href="https://maestrocreamos.github.io/TAREADOMINGO.github.io/" target="_blank" style="color: #2c3e50; padding: 0.8rem 1.5rem; text-decoration: none; display: block; transition: all 0.3s ease; font-weight: 500;">📝 Ver Tareas</a>
+                                    <a href="https://wa.me/50244160597?text=Hola,%20necesito%20ayuda%20con%20mi%20cuenta%20de%20estudiante%20del%20Plan%20Domingo." target="_blank" style="color: #25D366; padding: 0.8rem 1.5rem; text-decoration: none; display: block; transition: all 0.3s ease; font-weight: 500; border-top: 1px solid #f1f3f4;">💬 Soporte WhatsApp</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Botón Maestros -->
+                    <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 20px; padding: 2.5rem; border: 2px solid rgba(255,255,255,0.2); transition: all 0.3s ease;" 
+                         onmouseover="this.style.transform='translateY(-10px)'; this.style.background='rgba(255,255,255,0.2)'" 
+                         onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255,255,255,0.1)'">
+                        <div style="width: 80px; height: 80px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2.5rem;">👨‍🏫</div>
+                        <h3 style="color: white; font-size: 1.8rem; font-weight: 600; margin-bottom: 1rem;">MAESTROS</h3>
+                        <p style="color: rgba(255,255,255,0.8); margin-bottom: 2rem; line-height: 1.6;">Gestiona calificaciones, tareas y seguimiento académico</p>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div class="dropdown" style="position: relative;">
+                                <button style="width: 100%; background: white; color: #2c3e50; border: none; padding: 1rem 1.5rem; border-radius: 12px; font-weight: 600; font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease;" 
+                                        onmouseover="this.style.background='#f8f9fa'" 
+                                        onmouseout="this.style.background='white'">
+                                    📚 Gestión de Tareas ▼
+                                </button>
+                                <div class="dropdown-content" style="display: none; position: absolute; background: white; width: 100%; box-shadow: 0 8px 32px rgba(0,0,0,0.15); z-index: 1001; border-radius: 12px; padding: 0.5rem 0; top: calc(100% + 10px); left: 0; border: 1px solid rgba(0,0,0,0.1);">
+                                    <a href="https://maestrocreamos.github.io/portalmaestros.github.io/" target="_blank" style="color: #2c3e50; padding: 0.8rem 1.5rem; text-decoration: none; display: block; transition: all 0.3s ease; font-weight: 500;">📅 Plan Diario</a>
+                                    <a href="#" onclick="showComingSoon('Plan Domingo - Tareas')" style="color: #7f8c8d; padding: 0.8rem 1.5rem; text-decoration: none; display: block; transition: all 0.3s ease; font-weight: 500;">🗓️ Plan Domingo (Próximamente)</a>
+                                </div>
+                            </div>
+                            
+                            <div class="dropdown" style="position: relative;">
+                                <button style="width: 100%; background: rgba(255,255,255,0.9); color: #2c3e50; border: none; padding: 1rem 1.5rem; border-radius: 12px; font-weight: 600; font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease;" 
+                                        onmouseover="this.style.background='rgba(255,255,255,1)'" 
+                                        onmouseout="this.style.background='rgba(255,255,255,0.9)'">
+                                    📊 Gestión de Calificaciones ▼
+                                </button>
+                                <div class="dropdown-content" style="display: none; position: absolute; background: white; width: 100%; box-shadow: 0 8px 32px rgba(0,0,0,0.15); z-index: 1001; border-radius: 12px; padding: 0.5rem 0; top: calc(100% + 10px); left: 0; border: 1px solid rgba(0,0,0,0.1);">
+                                    <a href="https://maestrocreamos.github.io/NOTASDIARIOMAESTROS.github.io/" target="_blank" style="color: #2c3e50; padding: 0.8rem 1.5rem; text-decoration: none; display: block; transition: all 0.3s ease; font-weight: 500;">📅 Plan Diario</a>
+                                    <a href="https://maestrocreamos.github.io/NOTASDOMINGOMAESTROS.github.io/" target="_blank" style="color: #2c3e50; padding: 0.8rem 1.5rem; text-decoration: none; display: block; transition: all 0.3s ease; font-weight: 500;">🗓️ Plan Domingo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section" id="about">
+            <div class="about-container">
+                <div class="about-content">
+                    <h2>Rompiendo barreras socioeconómicas a través de la educación</h2>
+                    <p>El Programa de Educación Acelerada de CREAMOS está diseñado para jóvenes y adultos que enfrentaron obstáculos para completar su educación tradicional.</p>
+                    <p>Ofrecemos educación <strong>completamente gratuita</strong>, acreditada por el Ministerio de Educación, con una metodología flexible que se adapta a tu vida y responsabilidades.</p>
+                    
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">🎓</div>
+                            <div>
+                                <strong>Avalado por MINEDUC</strong>
+                                <p>Certificación oficial</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">📅</div>
+                            <div>
+                                <strong>Solo 1 día/semana</strong>
+                                <p>Horario flexible</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">💰</div>
+                            <div>
+                                <strong>100% Gratuito</strong>
+                                <p>Sin costos ocultos</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">📚</div>
+                            <div>
+                                <strong>Todo incluido</strong>
+                                <p>Materiales y apoyo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-visual">
+                    <img src="Logo.png" alt="Logo CREAMOS" style="width: 100%; max-width: 400px; height: auto; border-radius: 20px;">
+                </div>
+            </div>
+        </section>
+
+        <!-- Programs Section -->
+        <section class="programs-section">
+            <div class="programs-container">
+                <h2 class="section-title">Modalidades de Estudio</h2>
+                <p class="section-subtitle">Elige la modalidad que mejor se adapte a tu estilo de vida y responsabilidades</p>
+                
+                <div class="programs-grid">
+                    <div class="program-card">
+                        <div class="program-icon">📅</div>
+                        <h3>Plan Diario</h3>
+                        <p>Modalidad diseñada especialmente para mujeres, con horarios distribuidos de lunes a jueves según el grado académico.</p>
+                        
+                        <div class="program-schedule">
+                            <strong>Horario:</strong>
+                            <p>8:15 AM - 3:30 PM</p>
+                            <strong>Días:</strong>
+                            <p>Lunes a Jueves (según grado)</p>
+                            <strong>Dirigido a:</strong>
+                            <p>Mujeres de todas las edades</p>
+                        </div>
+                        
+                        <div class="program-buttons">
+                            <a href="#" class="btn btn-primary" onclick="showServices('diario')">Ver servicios</a>
+                            <a href="#" class="btn btn-secondary" onclick="showPhotos('diario')">📸 Ver Fotos</a>
+                        </div>
+                    </div>
+                    
+                    <div class="program-card">
+                        <div class="program-icon">🗓️</div>
+                        <h3>Plan Domingo</h3>
+                        <p>Modalidad especialmente diseñada para hombres, donde todos los grados estudian el mismo día y horario.</p>
+                        
+                        <div class="program-schedule">
+                            <strong>Horario:</strong>
+                            <p>8:15 AM - 3:30 PM</p>
+                            <strong>Días:</strong>
+                            <p>Domingos</p>
+                            <strong>Dirigido a:</strong>
+                            <p>Hombres de todas las edades</p>
+                        </div>
+                        
+                        <div class="program-buttons">
+                            <a href="#" class="btn btn-primary" onclick="showServices('domingo')">Ver servicios</a>
+                            <a href="#" class="btn btn-secondary" onclick="showPhotos('domingo')">📸 Ver Fotos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services-section">
+            <div class="services-container">
+                <h2 class="section-title text-center">Servicios Integrales Gratuitos</h2>
+                <p class="section-subtitle">Más que educación: un ecosistema completo de apoyo para tu desarrollo</p>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>👶 Cuidado Infantil</h3>
+                        <p>Servicio gratuito de niñeras para madres que estudian, garantizando que puedan enfocarse en su educación.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <h3>💼 Inclusión Laboral</h3>
+                        <p>Orientación y apoyo para encontrar oportunidades de trabajo formal y mejorar tu situación económica.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <h3>💻 Cursos de Computación</h3>
+                        <p>Capacitación en habilidades digitales con certificaciones reconocidas para el mercado laboral.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <h3>🎯 Talleres Especializados</h3>
+                        <p>Diversos talleres de desarrollo personal y habilidades prácticas para la vida.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <h3>💝 Apoyo Emocional</h3>
+                        <p>Acceso a servicios de apoyo psicológico y emocional como parte del programa Creamos Voces.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <h3>📚 Materiales Incluidos</h3>
+                        <p>Todos los libros, cuadernos y materiales educativos necesarios, completamente gratuitos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>¿Listo para comenzar tu educación?</h3>
+                    <p class="mb-3">Contáctanos por WhatsApp para iniciar tu proceso de inscripción. Estamos aquí para resolver todas tus dudas.</p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div>
+                            <strong>PLAN DIARIO (Mujeres)</strong>
+                            <p><a href="https://wa.me/50255709214?text=Hola,%20estoy%20interesada%20en%20el%20Plan%20Diario%20de%20Educación%20Acelerada.%20¿Podrían%20darme%20más%20información?" target="_blank" style="color: #3498db; text-decoration: none; font-weight: 600;">📱 WhatsApp: 5570-9214</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div>
+                            <strong>PLAN DOMINGO (Hombres)</strong>
+                            <p><a href="https://wa.me/50244160597?text=Hola,%20estoy%20interesado%20en%20el%20Plan%20Domingo%20de%20Educación%20Acelerada.%20¿Podrían%20darme%20más%20información?" target="_blank" style="color: #3498db; text-decoration: none; font-weight: 600;">📱 WhatsApp: 4416-0597</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong>Ubicación</strong>
+                            <p>Ciudad de Guatemala, Zona 3</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-visual">
+                    <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 16px; backdrop-filter: blur(10px);">
+                        <h4 style="margin-bottom: 1rem;">Proceso de Inscripción</h4>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <span style="background: #3498db; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">1</span>
+                                <span>Pre-inscripción</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <span style="background: #3498db; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">2</span>
+                                <span>Examen diagnóstico</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <span style="background: #3498db; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">3</span>
+                                <span>Semanas de adaptación</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <span style="background: #27ae60; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">✓</span>
+                                <span>¡Comenzar a estudiar!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews and Comments Section -->
+        <section class="reviews-section">
+            <div class="reviews-container">
+                <h2 class="section-title text-center">¿Qué opinan nuestros estudiantes?</h2>
+                <p class="section-subtitle">Tu experiencia es importante para nosotros. Comparte tu opinión y ayuda a otros a conocer CREAMOS.</p>
+                
+                <!-- Rating Summary -->
+                <div class="rating-summary">
+                    <div class="average-rating">
+                        <div class="rating-number" id="averageRating">0.0</div>
+                        <div class="rating-stars" id="averageStars">
+                            <span class="star">☆</span>
+                            <span class="star">☆</span>
+                            <span class="star">☆</span>
+                            <span class="star">☆</span>
+                            <span class="star">☆</span>
+                        </div>
+                        <div class="rating-count">(<span id="totalReviews">0</span> calificaciones)</div>
+                    </div>
+                </div>
+                
+                <!-- Add Review Form -->
+                <div class="add-review-form">
+                    <h3>🌟 Deja tu calificación y comentario</h3>
+                    <div class="form-group">
+                        <label for="reviewName">Tu nombre:</label>
+                        <input type="text" id="reviewName" placeholder="Escribe tu nombre completo" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Calificación:</label>
+                        <div class="rating-input" id="ratingInput">
+                            <span class="star-input" data-rating="1">☆</span>
+                            <span class="star-input" data-rating="2">☆</span>
+                            <span class="star-input" data-rating="3">☆</span>
+                            <span class="star-input" data-rating="4">☆</span>
+                            <span class="star-input" data-rating="5">☆</span>
+                        </div>
+                        <span class="rating-text" id="ratingText">Selecciona una calificación</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reviewComment">Tu comentario:</label>
+                        <textarea id="reviewComment" placeholder="Comparte tu experiencia con CREAMOS..." rows="4" required></textarea>
+                    </div>
+                    
+                    <button type="button" class="btn btn-primary" onclick="submitReview()">
+                        📝 Publicar Reseña
+                    </button>
+                </div>
+                
+                <!-- Reviews Display -->
+                <div class="reviews-display">
+                    <h3>💬 Comentarios de la comunidad</h3>
+                    <div class="reviews-list" id="reviewsList">
+                        <!-- Reviews will be displayed here -->
+                        <div class="no-reviews" id="noReviews">
+                            <p>🌟 ¡Sé el primero en compartir tu experiencia!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Services Detail Section -->
+    <section class="content-section" id="servicesSection">
+        <div class="content-container">
+            <button class="back-btn" onclick="showHome()">← Volver al Inicio</button>
+            <h2 class="section-title" id="servicesTitle">Servicios del Plan</h2>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>📊 Consulta de Calificaciones</h3>
+                    <p>Accede a tus calificaciones y seguimiento académico en tiempo real para monitorear tu progreso educativo.</p>
+                    <a id="notasLink" href="#" class="btn btn-primary" target="_blank">Consultar Notas</a>
+                </div>
+                
+                <div class="service-card">
+                    <h3>📝 Consulta de Tareas</h3>
+                    <p>Revisa tus tareas pendientes y entregadas de manera organizada, mantente al día con tus responsabilidades académicas.</p>
+                    <a id="tareasLink" href="#" class="btn btn-primary" target="_blank">Ver Tareas</a>
+                </div>
+                
+                <div class="service-card">
+                    <h3>ℹ️ Comunicados</h3>
+                    <p>Mantente informado sobre noticias importantes, eventos y comunicados del centro educativo.</p>
+                    <a href="#" class="btn btn-secondary">Próximamente</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Detail Section -->
+    <section class="content-section" id="programSection">
+        <div class="content-container">
+            <button class="back-btn" onclick="showHome()">← Volver al Inicio</button>
+            <h2 class="section-title text-center">Nuestro Programa de Educación Acelerada</h2>
+            
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-icon">📅</div>
+                    <h3>Plan Diario - Modalidad Mujeres</h3>
+                    <div style="text-align: left; background: #f8f9fa; padding: 1.5rem; border-radius: 12px; margin: 1rem 0;">
+                        <p><strong>🕐 Horario:</strong> 8:15 AM - 3:30 PM</p>
+                        <p><strong>📅 Días:</strong> Lunes a Jueves (según grado académico)</p>
+                        <p><strong>👥 Dirigido a:</strong> Mujeres de 15 a 60 años</p>
+                        <p><strong>📍 Modalidad:</strong> Presencial</p>
+                        <p><strong>👶 Incluye:</strong> Servicio gratuito de cuidado infantil</p>
+                    </div>
+                    <p>Diseñado especialmente para mujeres que necesitan flexibilidad en sus horarios. Cada grado tiene asignado un día específico de la semana, permitiendo una mejor organización del tiempo personal y familiar.</p>
+                    
+                    <div class="program-buttons">
+                        <a href="#" class="btn btn-secondary" onclick="showPhotos('diario')">📸 Ver Fotos</a>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-icon">🗓️</div>
+                    <h3>Plan Domingo - Modalidad Hombres</h3>
+                    <div style="text-align: left; background: #f8f9fa; padding: 1.5rem; border-radius: 12px; margin: 1rem 0;">
+                        <p><strong>🕐 Horario:</strong> 8:15 AM - 3:30 PM</p>
+                        <p><strong>📅 Días:</strong> Domingos únicamente</p>
+                        <p><strong>👥 Dirigido a:</strong> Hombres de 15 a 60 años</p>
+                        <p><strong>📍 Modalidad:</strong> Presencial</p>
+                        <p><strong>👨‍🎓 Característica:</strong> Todos los grados el mismo día</p>
+                    </div>
+                    <p>Modalidad concentrada en un solo día de la semana, ideal para hombres que trabajan de lunes a sábado. Todos los grados académicos asisten el mismo día, creando un ambiente de comunidad y apoyo mutuo.</p>
+                    
+                    <div class="program-buttons">
+                        <a href="#" class="btn btn-secondary" onclick="showPhotos('domingo')">📸 Ver Fotos</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, #3498db, #2c3e50); color: white; padding: 3rem; border-radius: 20px; text-align: center; margin-top: 3rem;">
+                <h3 style="margin-bottom: 1rem;">💡 ¿Sabías que...?</h3>
+                <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Nuestro programa está diseñado con metodología acelerada, lo que significa que puedes completar tu educación en menos tiempo que la modalidad tradicional, sin sacrificar la calidad educativa.</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <div>
+                        <span style="display: block; font-size: 2rem; font-weight: bold;">✅</span>
+                        <span>Metodología probada</span>
+                    </div>
+                    <div>
+                        <span style="display: block; font-size: 2rem; font-weight: bold;">🎓</span>
+                        <span>Certificación oficial</span>
+                    </div>
+                    <div>
+                        <span style="display: block; font-size: 2rem; font-weight: bold;">⏰</span>
+                        <span>Horarios flexibles</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Mode Indicator -->
+    <div class="admin-indicator" id="adminIndicator" style="display: none;">
+        <span>🔧 Modo Administrador Activo</span>
+        <button onclick="deactivateAdminMode()">Salir</button>
+    </div>
+
+    <!-- Success Notifications -->
+    <div class="notification success" id="successNotification">
+        <span id="successMessage"></span>
+        <button onclick="hideNotification('success')">&times;</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
