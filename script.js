@@ -3,7 +3,7 @@ let isAdminMode = false;
 let adminKeySequence = [];
 
 // ==================== NUEVO SISTEMA DE COMENTARIOS GOOGLE SHEETS ====================
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyWk_2xU26GEGYmZf53AYPjzaQVJfQ3FmRAdxMmCIhTidwe3qjeVrqwIKZoXzfx_NB7/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbww9TYmSiu2Oom7BHutiTFBLKAP2uGvXRoqKxYBSQt9HK20UOXmhwZYERwbfqar55NR/exec';
 let selectedRating = 0;
 let commentsLoaded = false;
 
@@ -913,5 +913,6 @@ function loadReviews() {
 function updateRatingSummary() {
     updateRatingSummaryImproved();
 }
+
 
 console.log('✅ Correcciones CORS aplicadas');
