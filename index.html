@@ -6,6 +6,290 @@
     <title>Educación Acelerada - CREAMOS</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="enhancements.css">
+<!-- ==================== GOOGLE ANALYTICS 4 COMPLETO PARA CREAMOS ==================== -->
+<!-- Agregar este código DENTRO del <head> en tu index.html, ANTES del </head> -->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P1RW1W0DBS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  // Configuración principal con privacidad y personalización para CREAMOS
+  gtag('config', 'G-P1RW1W0DBS', {
+    // Configuraciones de privacidad (importante para Guatemala)
+    anonymize_ip: true,
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false,
+    
+    // Configuraciones específicas para CREAMOS
+    send_page_view: true,
+    page_title: 'CREAMOS - Educación Para Adultos Guatemala',
+    page_location: window.location.href,
+    
+    // Configuración de eventos personalizados
+    custom_map: {
+      'plan_type': 'plan_recommendado',
+      'education_level': 'nivel_educativo',
+      'contact_method': 'metodo_contacto'
+    }
+  });
+
+  // Función principal para tracking de eventos CREAMOS
+  function trackCREAMOSEvent(eventName, parameters = {}) {
+    gtag('event', eventName, {
+      event_category: 'CREAMOS_Education',
+      event_label: parameters.label || '',
+      value: parameters.value || 0,
+      // Datos específicos de CREAMOS
+      plan_type: parameters.plan || 'unknown',
+      education_level: parameters.level || 'unknown',
+      user_type: parameters.user_type || 'visitor',
+      timestamp: new Date().toISOString(),
+      // Parámetros personalizados
+      custom_parameters: parameters.custom || {}
+    });
+    
+    console.log('📊 GA4 Event:', eventName, parameters);
+  }
+
+  // Función específica para el embudo de inscripción
+  function trackEmbudoInscripcion(step, details = {}) {
+    gtag('event', 'embudo_inscripcion', {
+      event_category: 'Conversion_Funnel',
+      event_label: step,
+      funnel_step: step,
+      plan_type: details.plan || 'unknown',
+      education_level: details.level || 'unknown',
+      source: details.source || 'website',
+      timestamp: new Date().toISOString()
+    });
+    
+    console.log(`📈 Embudo: ${step}`, details);
+  }
+
+  // Función para conversiones (leads de WhatsApp)
+  function trackConversion(plan, method, additionalData = {}) {
+    // Evento principal de conversión
+    gtag('event', 'conversion', {
+      event_category: 'Lead_Generation',
+      event_label: `${plan}_${method}`,
+      value: 1,
+      currency: 'GTQ',
+      plan_type: plan,
+      contact_method: method,
+      conversion_type: 'whatsapp_contact'
+    });
+    
+    // Evento específico de lead generation
+    gtag('event', 'generate_lead', {
+      currency: 'GTQ',
+      value: 1,
+      plan_type: plan,
+      contact_method: method,
+      lead_source: 'website',
+      ...additionalData
+    });
+    
+    console.log('🎯 Conversión:', plan, method);
+  }
+
+  // Tracking automático de engagement
+  let scrollDepths = [25, 50, 75, 90];
+  let scrollDepthTriggered = [];
+  let maxScrollDepth = 0;
+
+  window.addEventListener('scroll', function() {
+    let scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+    maxScrollDepth = Math.max(maxScrollDepth, scrollPercent);
+    
+    scrollDepths.forEach(depth => {
+      if (scrollPercent >= depth && !scrollDepthTriggered.includes(depth)) {
+        scrollDepthTriggered.push(depth);
+        gtag('event', 'scroll_depth', {
+          event_category: 'Engagement',
+          event_label: `${depth}%`,
+          value: depth,
+          max_scroll_depth: maxScrollDepth
+        });
+      }
+    });
+  });
+
+  // Tracking de tiempo en página mejorado
+  let timeOnPageStart = Date.now();
+  let engagementEvents = [];
+  
+  // Marcar puntos de engagement
+  function markEngagement(action) {
+    engagementEvents.push({
+      action: action,
+      timestamp: Date.now() - timeOnPageStart
+    });
+  }
+
+  // Enviar datos al salir de la página
+  window.addEventListener('beforeunload', function() {
+    let timeSpent = Math.round((Date.now() - timeOnPageStart) / 1000);
+    
+    if (timeSpent > 10) { // Solo si pasó más de 10 segundos
+      gtag('event', 'time_on_page', {
+        event_category: 'Engagement',
+        value: timeSpent,
+        event_label: timeSpent > 120 ? 'engaged_user' : 'quick_visitor',
+        max_scroll_depth: maxScrollDepth,
+        engagement_events: engagementEvents.length
+      });
+    }
+  });
+
+  // Detectar tipo de usuario y dispositivo
+  window.addEventListener('load', function() {
+    
+    // Evento de página vista mejorado
+    gtag('event', 'page_view_enhanced', {
+      event_category: 'Navigation',
+      page_title: document.title,
+      page_location: window.location.href,
+      device_type: navigator.userAgent.includes('Mobile') ? 'mobile' : 'desktop',
+      referrer: document.referrer || 'direct',
+      language: navigator.language || 'es-GT',
+      screen_resolution: `${screen.width}x${screen.height}`
+    });
+
+    // Detectar usuario nuevo vs recurrente
+    let isReturningUser = localStorage.getItem('creamos_visitor_id');
+    let visitCount = parseInt(localStorage.getItem('creamos_visit_count') || '0') + 1;
+    
+    if (!isReturningUser) {
+      // Usuario nuevo
+      let visitorId = 'creamos_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+      localStorage.setItem('creamos_visitor_id', visitorId);
+      localStorage.setItem('creamos_visit_count', '1');
+      localStorage.setItem('creamos_first_visit', new Date().toISOString());
+      
+      gtag('event', 'new_visitor', {
+        event_category: 'User_Type',
+        event_label: 'first_visit',
+        visitor_id: visitorId
+      });
+    } else {
+      // Usuario recurrente
+      localStorage.setItem('creamos_visit_count', visitCount.toString());
+      let firstVisit = localStorage.getItem('creamos_first_visit');
+      let daysSinceFirst = firstVisit ? Math.floor((Date.now() - new Date(firstVisit).getTime()) / (1000 * 60 * 60 * 24)) : 0;
+      
+      gtag('event', 'returning_visitor', {
+        event_category: 'User_Type',
+        event_label: 'repeat_visit',
+        days_since_first: daysSinceFirst,
+        visit_count: visitCount,
+        visitor_id: isReturningUser
+      });
+    }
+
+    // Tracking de elementos clave visibles
+    let observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          let elementId = entry.target.id || entry.target.className.split(' ')[0];
+          gtag('event', 'section_viewed', {
+            event_category: 'Content_Engagement',
+            event_label: elementId,
+            element_type: entry.target.tagName,
+            visibility_ratio: Math.round(entry.intersectionRatio * 100)
+          });
+          
+          markEngagement(`viewed_${elementId}`);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    // Observar secciones importantes
+    document.querySelectorAll('.hero, .faq-section, .testimonials-section, .programs-section, .about-section').forEach(el => {
+      observer.observe(el);
+    });
+
+  });
+
+  // Integración con sistema existente de CREAMOS
+  document.addEventListener('DOMContentLoaded', function() {
+    
+    // Override de la función trackConversionEvent existente para integrar con GA4
+    if (window.trackConversionEvent) {
+      const originalTrackConversionEvent = window.trackConversionEvent;
+      
+      window.trackConversionEvent = function(eventName, parameters = {}) {
+        // Llamar a la función original de CREAMOS
+        originalTrackConversionEvent(eventName, parameters);
+        
+        // Agregar tracking de GA4
+        if (typeof gtag !== 'undefined') {
+          trackCREAMOSEvent(eventName, parameters);
+          
+          // Eventos especiales del embudo de inscripción
+          if (eventName.includes('prequalification_opened')) {
+            trackEmbudoInscripcion('quiz_started', parameters);
+            markEngagement('quiz_opened');
+          } else if (eventName.includes('prequalification_recommendation_shown')) {
+            trackEmbudoInscripcion('quiz_completed', parameters);
+            markEngagement('quiz_completed');
+          } else if (eventName.includes('whatsapp_click')) {
+            trackConversion(parameters.plan || 'unknown', 'whatsapp', parameters);
+            trackEmbudoInscripcion('contact_initiated', parameters);
+            markEngagement('whatsapp_clicked');
+          } else if (eventName.includes('faq_opened')) {
+            trackEmbudoInscripcion('faq_engagement', parameters);
+            markEngagement('faq_interaction');
+          } else if (eventName.includes('testimonial_viewed')) {
+            markEngagement('testimonial_viewed');
+          }
+        }
+      };
+    }
+
+    // Tracking de clicks en elementos importantes
+    document.addEventListener('click', function(e) {
+      // Botones de inscripción
+      if (e.target.classList.contains('btn-primary') && e.target.textContent.includes('Inscr')) {
+        gtag('event', 'cta_click', {
+          event_category: 'CTA_Engagement',
+          event_label: 'inscription_button',
+          button_text: e.target.textContent.trim()
+        });
+      }
+      
+      // Enlaces externos
+      if (e.target.tagName === 'A' && e.target.href && !e.target.href.includes(window.location.hostname)) {
+        gtag('event', 'click', {
+          event_category: 'External_Link',
+          event_label: e.target.href,
+          outbound: true
+        });
+      }
+      
+      // Navegación interna
+      if (e.target.classList.contains('nav-link')) {
+        gtag('event', 'navigation', {
+          event_category: 'Internal_Navigation',
+          event_label: e.target.textContent.trim()
+        });
+      }
+    });
+
+    console.log('🔗 Integración GA4 + CREAMOS configurada exitosamente');
+  });
+
+  // Exportar funciones para uso global
+  window.trackCREAMOSEvent = trackCREAMOSEvent;
+  window.trackEmbudoInscripcion = trackEmbudoInscripcion;
+  window.trackConversion = trackConversion;
+  
+  console.log('📊 Google Analytics 4 configurado para CREAMOS');
+  console.log('🎯 Measurement ID: G-P1RW1W0DBS');
+  console.log('🌐 Sitio: https://educacioncreamos.github.io/Creamos-Educacion/');
+</script>
 </head>
 <body>
     <!-- ==================== BANNER DE URGENCIA ==================== -->
@@ -1423,3 +1707,4 @@
 </div>
 </body>
 </html>
+
