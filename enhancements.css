@@ -1849,3 +1849,79 @@ button:focus {
         font-size: 2rem;
     }
 }
+
+/* ==================== FIX BOTONES "VER FOTOS" - GITHUB PAGES ==================== */
+/* Agregar al final de enhancements.css */
+
+/* Asegurar que los botones secundarios tengan texto visible */
+.btn-secondary {
+    background: transparent !important;
+    color: #2c3e50 !important; /* Texto oscuro para que sea visible */
+    border: 2px solid #2c3e50 !important;
+    font-weight: 600 !important;
+}
+
+.btn-secondary:hover {
+    background: #2c3e50 !important;
+    color: white !important;
+    border-color: #2c3e50 !important;
+    transform: translateY(-3px);
+}
+
+/* Fix específico para botones dentro de program-card */
+.program-card .btn-secondary {
+    background: #f8f9fa !important;
+    color: #2c3e50 !important;
+    border: 2px solid #3498db !important;
+    padding: 0.8rem 1.5rem !important;
+    border-radius: 8px !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.program-card .btn-secondary:hover {
+    background: #3498db !important;
+    color: white !important;
+    border-color: #3498db !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3) !important;
+}
+
+/* Asegurar visibilidad en program-buttons */
+.program-buttons {
+    display: flex !important;
+    gap: 1rem !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    margin-top: 1.5rem !important;
+}
+
+.program-buttons .btn {
+    flex: 1 !important;
+    min-width: 140px !important;
+    max-width: 200px !important;
+    text-align: center !important;
+}
+
+/* Fix para modo responsive */
+@media (max-width: 768px) {
+    .program-buttons {
+        flex-direction: column !important;
+    }
+    
+    .program-buttons .btn {
+        flex: none !important;
+        width: 100% !important;
+        max-width: none !important;
+    }
+    
+    .program-card .btn-secondary {
+        font-size: 0.95rem !important;
+        padding: 0.9rem 1.2rem !important;
+    }
+}
